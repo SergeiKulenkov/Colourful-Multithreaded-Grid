@@ -1,0 +1,6 @@
+/.vs
+/Binaries
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.sln
