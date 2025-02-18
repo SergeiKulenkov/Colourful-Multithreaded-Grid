@@ -27,8 +27,6 @@ namespace Random
 
 Grid::Grid()
 {
-	m_Cells.resize((size_t)(m_GridSize * m_GridSize));
-
 	uint16_t rowStartIndex = 0;
 	for (uint16_t row = 0; row < m_GridSize; row++)
 	{

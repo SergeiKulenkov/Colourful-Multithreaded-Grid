@@ -1,6 +1,7 @@
 #pragma once
 #include <random>
 #include <string_view>
+#include <array>
 
 #include "../App/Object.h"
 #include "ThreadPool.h"
@@ -85,7 +86,7 @@ private:
 	bool m_ThreadsEnbaled = false;
 	std::chrono::duration<float> m_Duration;
 
-	std::vector<Cell> m_Cells;
+	std::array<Cell, m_GridSize * m_GridSize> m_Cells;
 
 	ImDrawList* m_DrawList;
 
