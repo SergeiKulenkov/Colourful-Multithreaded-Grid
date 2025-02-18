@@ -1,27 +1,9 @@
 #include <chrono>
 #include <iostream>
+
 #include "../glm/glm/glm.hpp"
 #include "Grid.h"
 #include "Game.h"
-
-////////////////////
-
-namespace Random
-{
-	static uint32_t RandomNumber(uint32_t input)
-	{
-		uint32_t state = input * 747796405u + 2891336453u;
-		uint32_t word = ((state >> ((state >> 28u) + 4u)) ^ state) * 277803737u;
-		return (word >> 22u) ^ word;
-	}
-
-	static int16_t RandomInRange(int16_t min, int16_t max)
-	{
-		thread_local std::mt19937 generator(std::random_device{}());
-		std::uniform_int_distribution<int16_t> distribution(min, max);
-		return distribution(generator);
-	}
-}
 
 ////////////////////
 

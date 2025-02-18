@@ -1,6 +1,16 @@
 #pragma once
+#include <random>
+
 #include "../App/App.h"
 #include "Grid.h"
+
+////////////////////
+
+namespace Random
+{
+	uint32_t RandomNumber(uint32_t input);
+	int16_t RandomInRange(int16_t min, int16_t max);
+}
 
 ////////////////////
 
