@@ -45,6 +45,7 @@ Grid::Grid()
 
 Grid::~Grid()
 {
+	m_DrawList = nullptr;
 }
 
 void Grid::InitStatsWindow(const ImVec2 windowSize)
@@ -79,10 +80,13 @@ void Grid::Update(float deltaTime)
 void Grid::Draw()
 {
 	m_DrawList = ImGui::GetBackgroundDrawList();
-	for (const Cell& cell : m_Cells)
+	if (m_DrawList != nullptr)
 	{
-		m_DrawList->AddRect(cell.m_TopLeft, cell.m_BottomRight, m_GridColour, 0, 0, m_GridThickness);
-		m_DrawList->AddCircleFilled(cell.m_Center, cell.m_Radius, cell.m_Colour);
+		for (const Cell& cell : m_Cells)
+		{
+			m_DrawList->AddRect(cell.m_TopLeft, cell.m_BottomRight, m_GridColour, 0, 0, m_GridThickness);
+			m_DrawList->AddCircleFilled(cell.m_Center, cell.m_Radius, cell.m_Colour);
+		}
 	}
 
 	ImGui::SetNextWindowPos(m_StatsWindowPosition);
