@@ -21,7 +21,7 @@ struct Cell
 	static constexpr ImU32 defaultColour = 4285452835; // converted from ImVec4(35 / 255.f, 210 / 255.f, 110 / 255.f, 1.f)
 	static constexpr ImVec4 minColour = ImVec4(70 / 255.f, 90 / 255.f, 70 / 255.f, 1.f);
 	static constexpr ImVec4 maxColour = ImVec4(190 / 255.f, 180 / 255.f, 180 / 255.f, 1.f);;
-	static constexpr uint16_t colourChange = 10;
+	static constexpr int16_t colourChange = 10;
 	static constexpr float positionChange = 2.25;
 
 	////////////////////

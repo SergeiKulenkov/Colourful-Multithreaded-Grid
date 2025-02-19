@@ -6,10 +6,31 @@
 
 ////////////////////
 
+template<typename T>
+concept Integral = std::is_integral_v<T> && !std::is_same_v<T, bool>;
+
+template<typename T>
+concept Floating = std::is_floating_point_v<T> && !std::is_same_v<T, bool>;
+
 namespace Random
 {
 	uint32_t RandomNumber(uint32_t input);
-	int16_t RandomInRange(int16_t min, int16_t max);
+
+	template<Integral T>
+	T RandomInRange(const T min, const T max)
+	{
+		thread_local std::mt19937 generator(std::random_device{} ());
+		std::uniform_int_distribution<T> distribution(min, max);
+		return distribution(generator);
+	}
+
+	template<Floating T>
+	T RandomInRange(const T min, const T max)
+	{
+		thread_local std::mt19937 generator(std::random_device{} ());
+		std::uniform_real_distribution<T> distribution(min, max);
+		return distribution(generator);
+	}
 }
 
 ////////////////////

@@ -10,13 +10,6 @@ namespace Random
 		uint32_t word = ((state >> ((state >> 28u) + 4u)) ^ state) * 277803737u;
 		return (word >> 22u) ^ word;
 	}
-
-	int16_t RandomInRange(int16_t min, int16_t max)
-	{
-		thread_local std::mt19937 generator(std::random_device{}());
-		std::uniform_int_distribution<int16_t> distribution(min, max);
-		return distribution(generator);
-	}
 }
 
 ////////////////////

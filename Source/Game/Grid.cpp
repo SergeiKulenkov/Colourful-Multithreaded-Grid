@@ -156,5 +156,5 @@ void Grid::RandomlyChangeCell(Cell& cell, uint32_t& randomSeed, const int8_t dir
 	randomColour.x = glm::clamp(randomColour.x, Cell::minColour.x, Cell::maxColour.x);
 	randomColour.y = glm::clamp(randomColour.y, Cell::minColour.y, Cell::maxColour.y);
 	randomColour.z = glm::clamp(randomColour.z, Cell::minColour.z, Cell::maxColour.z);
-	cell.m_Colour = ImGui::GetColorU32(randomColour) + Random::RandomInRange(-Cell::colourChange, Cell::colourChange);
+	cell.m_Colour = ImGui::GetColorU32(randomColour) + Random::RandomInRange((int16_t)(-Cell::colourChange), Cell::colourChange);
 }
