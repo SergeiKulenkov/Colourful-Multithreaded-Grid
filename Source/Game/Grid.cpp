@@ -28,7 +28,7 @@ Grid::~Grid()
 	m_DrawList = nullptr;
 }
 
-void Grid::InitStatsWindow(const ImVec2 windowSize)
+void Grid::InitStatsWindow(const ImVec2& windowSize)
 {
 	m_StatsWindowHeight = windowSize.y;
 	m_StatsWindowPosition = ImVec2(windowSize.x - m_StatsWindowWidth, 0);
@@ -151,7 +151,7 @@ void Grid::RandomlyChangeCell(Cell& cell, uint32_t& randomSeed, const int8_t dir
 	cell.m_BottomRight.x += Cell::positionChange * direction;
 	cell.m_Center.x += Cell::positionChange * direction;
 
-	randomSeed += cell.m_Center.x + cell.m_Center.y;
+	randomSeed += static_cast<uint32_t>(cell.m_Center.x + cell.m_Center.y);
 	ImVec4 randomColour = ImGui::ColorConvertU32ToFloat4(Random::RandomNumber(randomSeed));
 	randomColour.x = glm::clamp(randomColour.x, Cell::minColour.x, Cell::maxColour.x);
 	randomColour.y = glm::clamp(randomColour.y, Cell::minColour.y, Cell::maxColour.y);

@@ -14,7 +14,7 @@ concept Floating = std::is_floating_point_v<T> && !std::is_same_v<T, bool>;
 
 namespace Random
 {
-	uint32_t RandomNumber(uint32_t input);
+	uint32_t RandomNumber(const uint32_t input);
 
 	template<Integral T>
 	T RandomInRange(const T min, const T max)

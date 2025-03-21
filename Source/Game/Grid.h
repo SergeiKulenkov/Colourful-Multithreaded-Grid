@@ -16,7 +16,7 @@ struct Cell
 
 	////////////////////
 
-	static constexpr float cellSize = 7.15;
+	static constexpr float cellSize = 7.15f;
 	static constexpr float radius = 3.5;
 	static constexpr ImU32 defaultColour = 4285452835; // converted from ImVec4(35 / 255.f, 210 / 255.f, 110 / 255.f, 1.f)
 	static constexpr ImVec4 minColour = ImVec4(70 / 255.f, 90 / 255.f, 70 / 255.f, 1.f);
@@ -41,7 +41,7 @@ public:
 	Grid();
 	~Grid();
 
-	void InitStatsWindow(const ImVec2 windowSize);
+	void InitStatsWindow(const ImVec2& windowSize);
 
 	virtual void Update(float deltaTime) override;
 	virtual void Draw() override;
@@ -83,11 +83,11 @@ private:
 
 	bool m_HasStarted = false;
 	bool m_ThreadsEnbaled = false;
-	std::chrono::duration<float> m_Duration;
+	std::chrono::duration<float> m_Duration = std::chrono::milliseconds(0);
 
 	std::array<Cell, m_GridSize * m_GridSize> m_Cells;
 
-	ImDrawList* m_DrawList;
+	ImDrawList* m_DrawList = nullptr;
 
 	ThreadPool m_ThreadPool;
 };

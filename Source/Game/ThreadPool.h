@@ -5,6 +5,7 @@
 #include <mutex>
 #include <functional>
 #include <condition_variable>
+#include <atomic>
 
 ////////////////////
 
@@ -32,7 +33,7 @@ public:
 
 private:
 	uint8_t m_NumberOfThreads;
-	bool m_IsShuttingDown = false;
+	std::atomic<bool> m_IsShuttingDown = false;
 
 	std::vector<std::thread> m_Threads;
 	std::queue<std::function<void()>> m_Tasks;
